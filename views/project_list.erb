@@ -1,0 +1,16 @@
+<h3>Here are all the projects in this database:</h3>
+
+<% if @projects.any?() %>
+  <p>Click on a project to view details</p>
+
+  <ul>
+    <% @projects.each do |project| %>
+      <li><a href="/projects/<%= project.id() %>"><%= project.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no projects added yet!</p>
+<% end %>
+
+
+<a href="/" class = "btn btn-primary active" role = "button">Home</a>
