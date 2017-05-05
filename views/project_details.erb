@@ -29,17 +29,21 @@
   </div>
 </div>
 
+
+
 <div class="row">
   <br>
   <div class="col-md-2">
     <a href="/projects" class = "btn btn-success active" role = "button">Go Back</a>
   </div>
   <div class="col-md-3">
-    <a href="/projects/new" class = "btn btn-primary active" role = "button">Add a new project</a>
-  </div>
-  <div class="col-md-3">
     <form action="/projects/<%= @project.id() %>" method="post">
       <input type="hidden" name="_method" value="patch">
+      <button class = "btn btn-primary active" type="submit">Refresh volunteer hours</button>
+    </form>
+  </div>
+  <div class="col-md-3">
+    <form action="/project/rename/<%= @project.id() %>" method="post">
       <button class = "btn btn-warning active" type="submit">Rename <%= @project.name() %></button>
     </form>
   </div>

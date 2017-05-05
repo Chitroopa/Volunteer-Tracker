@@ -54,7 +54,7 @@ describe(Project) do
     end
   end
 
-  describe("#update") do
+  describe("#update_hours") do
     it("lets you update projects in the database") do
       test_project = Project.new({:name => "Blood collection volunteer", :id => nil, :hours => 0})
       test_project.save()
@@ -67,7 +67,7 @@ describe(Project) do
     end
   end
 
-  describe("#update_hours") do
+  describe("#update") do
     it("lets you to calculate total hours of all volunteers in a single project") do
       test_project = Project.new({:name => "Blood collection volunteer", :id => nil, :hours => 0})
       test_project.save()

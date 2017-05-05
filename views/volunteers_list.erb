@@ -1,0 +1,22 @@
+<h3>Here are the list of Volunteers:</h3>
+
+<% if @volunteers.any?() %>
+  <p>Click on a volunteer to view details</p>
+
+  <ul>
+    <% @volunteers.each do |volunteer| %>
+      <li><a href="/volunteer/<%= volunteer.id() %>"><%= volunteer.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no volunteers added yet!</p>
+<% end %>
+
+<div class="row">
+  <div class="col-md-3">
+    <a href="/" class = "btn btn-success active" role = "button">Home</a>
+  </div>
+  <div class="col-md-3">
+    <a href="/volunteer/new" class = "btn btn-primary active" role = "button">Add a new volunteer</a>
+  </div>
+</div>
