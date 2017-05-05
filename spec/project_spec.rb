@@ -127,5 +127,4 @@ describe(Project) do
       expect(Project.sort_by_hours('least')).to eq([new_project3, new_project1, new_project2 ])
     end
   end
-
 end

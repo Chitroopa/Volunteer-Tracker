@@ -2,7 +2,6 @@
 
 <% if @volunteers.any?() %>
   <p>Click on a volunteer to view details</p>
-
   <ul>
     <% @volunteers.each do |volunteer| %>
       <li><a href="/volunteer/<%= volunteer.id() %>"><%= volunteer.name() %></a></li>

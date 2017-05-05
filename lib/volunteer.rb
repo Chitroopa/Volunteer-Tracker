@@ -92,5 +92,4 @@ class Volunteer
     end
     return volunteers_sorted
   end
-
 end

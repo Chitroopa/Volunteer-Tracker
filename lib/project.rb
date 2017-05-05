@@ -1,4 +1,3 @@
-require 'pry'
 class Project
   attr_reader(:name, :id, :hours)
 
@@ -92,5 +91,4 @@ class Project
     end
     return projects_sorted
   end
-
 end

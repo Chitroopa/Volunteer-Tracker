@@ -3,8 +3,6 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-# DB = PG.connect({:dbname=>'volunteer_tracker_test'})
-
 describe('volunteer tracker',{:type => :feature}) do
 
   it('on click of check on projects, displays project page') do
@@ -135,5 +133,4 @@ describe('volunteer tracker',{:type => :feature}) do
     click_button('Delete Bob Authors')
     expect(page).to have_content('There are no volunteers added yet!')
   end
-
 end
