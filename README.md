@@ -25,10 +25,12 @@ _The following user stories are completed:_
 
 ## Database setup instructions
 
-In PSQL: enter the following lines to create a new database
+In PSQL: enter the following to create a new database
 
 CREATE DATABASE volunteer_tracker;
+
 CREATE TABLE projects (id serial PRIMARY KEY, name varchar, hours int);
+
 CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar,hours int, phone_number archer, project_id int);
 
 ## Known Bugs
