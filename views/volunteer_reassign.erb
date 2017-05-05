@@ -1,0 +1,20 @@
+<h1><%= @volunteer.name() %></h1><br>
+<form action="/volunteer/reassign/<%= @volunteer.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <div class="form-group">
+    <% if @projects != nil %>
+      <label for="project_id" class="col-sm-2 form-control-label">Assign new project</label>
+      <select id='project_id' name='project_id' type='text'>
+        <% @projects.each() do |project| %>
+          <option value="<%= project.id()%>"> <%= project.name() %> </option>
+        <% end %>
+        <option value="nil"> Yet to decide </option>
+      </select>
+    <% else %>
+    <h4>No projects yet <a href="/projects">Click here to add new project</a></h4>
+    <% end %>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<a href="/volunteers" class = "btn btn-success active" role = "button">Go Back</a>

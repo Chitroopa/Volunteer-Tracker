@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-3">
+    <h4>Name:</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><%= @volunteer.name() %></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Phone number:</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><%= @volunteer.phone_number() %></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Current project:</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><%= @volunteer.project_name() %></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Volunteer hours:</h4>
+  </div>
+  <div class="col-md-3">
+    <h4><%= @volunteer.hours() %></h4>
+  </div>
+</div>
+
+<div class="row">
+  <br>
+  <div class="col-md-2">
+    <a href="/volunteers" class = "btn btn-success active" role = "button">Go Back</a>
+  </div>
+  <div class="col-md-3">
+    <form action="/volunteer/update/<%= @volunteer.id() %>" method="post">
+      <button class = "btn btn-primary active" type="submit">Add volunteer hours</button>
+    </form>
+  </div>
+  <div class="col-md-3">
+    <form action="/volunteer/reassign/<%= @volunteer.id() %>" method="post">
+      <button class = "btn btn-warning active" type="submit">Reassign project</button>
+    </form>
+  </div>
+  <div class="col-md-3">
+    <form action="/volunteer/<%= @volunteer.id() %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button class = "btn btn-danger active" type="submit">Delete <%= @volunteer.name() %></button>
+    </form>
+  </div>
+</div>

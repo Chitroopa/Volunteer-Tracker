@@ -18,8 +18,8 @@ class Volunteer
       hours = volunteer.fetch("hours").to_i()
       phone_number = volunteer.fetch("phone_number")
       project_id = volunteer.fetch("project_id").to_i()
-      volunteers.push(Project.new({:name=>name, :id=>id, :hours=>hours, :phone_number => phone_number, :project_id => project_id}))
-    end
+      volunteers.push(Volunteer.new({:name=>name, :id=>id, :hours=>hours, :phone_number=> phone_number, :project_id=>project_id}))
+      end
     return volunteers
   end
 
@@ -28,7 +28,7 @@ class Volunteer
   end
 
   def save
-    result = DB.exec("INSERT INTO volunteers (name, hours, project_id, phone_number) VALUES ('#{@name}', #{@hours}, '#{@project_id}','#{@phone_number}') RETURNING id;")
+    result = DB.exec("INSERT INTO volunteers (name, hours, project_id, phone_number) VALUES ('#{@name}', #{@hours}, #{@project_id},'#{@phone_number}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
 
@@ -52,6 +52,14 @@ class Volunteer
     end
     @hours = old_hours + new_hours
     DB.exec("UPDATE volunteers SET hours = #{@hours} WHERE id = #{@id};")
+  end
+
+  def update_project(attributes)
+    @id = self.id()
+    @project_id = attributes.fetch(:project_id)
+    @hours = 0
+    DB.exec("UPDATE volunteers SET hours = #{@hours} WHERE id = #{@id};")
+    DB.exec("UPDATE volunteers SET project_id = #{@project_id} WHERE id = #{@id};")
   end
 
   def delete
