@@ -31,7 +31,7 @@ CREATE DATABASE volunteer_tracker;
 
 CREATE TABLE projects (id serial PRIMARY KEY, name varchar, hours int);
 
-CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar,hours int, phone_number archer, project_id int);
+CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar,hours int, phone_number varchar, project_id int);
 
 ## Known Bugs
 
