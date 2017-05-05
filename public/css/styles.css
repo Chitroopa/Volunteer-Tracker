@@ -1,0 +1,9 @@
+body {
+  font-family: 'Allerta', Helvetica, Arial, sans-serif;
+  background-color: #dcf2b3;
+}
+.heading {
+  background-color: inherit;
+  text-align: center;
+  color: #053684;
+}
