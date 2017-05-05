@@ -18,7 +18,7 @@ class Volunteer
       hours = volunteer.fetch("hours").to_i()
       phone_number = volunteer.fetch("phone_number")
       project_id = volunteer.fetch("project_id").to_i()
-      volunteers.push(Project.new(:name=>name, :id=>id, :hours=>hours, :phone_number => phone_number, :project_id => project_id))
+      volunteers.push(Project.new({:name=>name, :id=>id, :hours=>hours, :phone_number => phone_number, :project_id => project_id}))
     end
     return volunteers
   end
@@ -57,4 +57,32 @@ class Volunteer
   def delete
     DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
   end
+
+  def project_name
+    volunteeer_project_name = ""
+    projects = DB.exec("SELECT * FROM projects WHERE id = #{self.project_id()};")
+    projects.each() do |project|
+      volunteeer_project_name = project.fetch("name")
+    end
+    return volunteeer_project_name
+  end
+
+  def self.sort_by_name
+    volunteers = Volunteer.all()
+    volunteers_sorted = volunteers.sort_by(&:name)
+    return volunteers_sorted
+  end
+
+  def self.sort_by_hours(order)
+    volunteers = Volunteer.all()
+    if order == 'most'
+      volunteers_sorted = volunteers.sort_by(&:hours).reverse
+    elsif order == 'least'
+      volunteers_sorted = volunteers.sort_by(&:hours)
+    else
+      volunteers_sorted = volunteers
+    end
+    return volunteers_sorted
+  end
+
 end

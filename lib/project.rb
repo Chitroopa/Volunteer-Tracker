@@ -66,5 +66,31 @@ class Project
     DB.exec("DELETE FROM volunteers WHERE project_id = #{self.id()};")
   end
 
+  def update_hours
+    @id = self.id()
+    returned_result = DB.exec("SELECT SUM(hours) FROM volunteers WHERE project_id = #{@id};")
+    returned_result.each() do |result|
+      @hours = result.fetch("sum").to_i()
+    end
+    DB.exec("UPDATE projects SET hours = '#{@hours}' WHERE id = #{@id};")
+  end
+
+  def self.sort_by_name
+    projects = Project.all()
+    projects_sorted = projects.sort_by(&:name)
+    return projects_sorted
+  end
+
+  def self.sort_by_hours(order)
+    projects = Project.all()
+    if order == 'most'
+      projects_sorted = projects.sort_by(&:hours).reverse
+    elsif order == 'least'
+      projects_sorted = projects.sort_by(&:hours)
+    else
+      projects_sorted = projects
+    end
+    return projects_sorted
+  end
 
 end
