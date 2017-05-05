@@ -1,3 +1,4 @@
+require 'pry'
 class Project
   attr_reader(:name, :id, :hours)
 
@@ -16,7 +17,7 @@ class Project
       hours = project.fetch("hours").to_i()
       projects.push(Project.new(:name=>name, :id=>id, :hours=>hours))
     end
-    projects
+    return projects
   end
 
   def save
@@ -41,10 +42,20 @@ class Project
   def volunteers
     project_volunteeers = []
     volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id()};")
-    volunteers.each() do |volunteer|
 
+    volunteers.each() do |volunteer|
+      name = volunteer.fetch("name")
+      id = volunteer.fetch("id").to_i()
+      hours = volunteer.fetch("hours").to_i()
+      phone_number = volunteer.fetch("phone_number")
+      project_id = volunteer.fetch("project_id").to_i()
+
+      project_volunteeers.push(Volunteer.new(:name=>name, :id=>id, :hours=>hours, :phone_number => phone_number, :project_id => project_id))
     end
+    project_volunteeers
   end
+
+  
 
 
 end
