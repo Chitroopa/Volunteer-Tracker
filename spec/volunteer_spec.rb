@@ -43,5 +43,25 @@ describe(Volunteer) do
     end
   end
 
+  describe("#update") do
+    it("lets you update projects in the database") do
+      new_volunteer = Volunteer.new({:name => "Bob Authors", :id => nil, :hours => 5, :phone_number => '4567891012', :project_id => 1})
+      new_volunteer.save()
+      new_volunteer.update({:hours => 10})
+      expect(new_volunteer.hours()).to(eq(15))
+    end
+  end
+
+  describe("#delete") do
+    it("lets you delete a volunteer from the database") do
+      new_volunteer = Volunteer.new({:name => "Bob Authors", :id => nil, :hours => 5, :phone_number => '4567891012', :project_id => 1})
+      new_volunteer.save()
+      new_volunteer1 = Volunteer.new({:name => "Bob smith", :id => nil, :hours => 5, :phone_number => '4567891012', :project_id => 1})
+      new_volunteer1.save()
+      new_volunteer1.delete()
+      expect(Volunteer.all()).to(eq([new_volunteer]))
+    end
+  end
+
 
 end

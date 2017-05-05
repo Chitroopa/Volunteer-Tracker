@@ -42,4 +42,19 @@ class Volunteer
     return found_volunteer
   end
 
+  def update(attributes)
+    @id = self.id()
+    new_hours = attributes.fetch(:hours)
+    old_hours = 0
+    returned_result = DB.exec("SELECT hours FROM volunteers WHERE id = #{@id};")
+    returned_result.each() do |result|
+      old_hours = result.fetch("hours").to_i()
+    end
+    @hours = old_hours + new_hours
+    DB.exec("UPDATE volunteers SET hours = #{@hours} WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{self.id()};")
+  end
 end

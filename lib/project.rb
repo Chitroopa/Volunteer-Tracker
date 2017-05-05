@@ -55,7 +55,16 @@ class Project
     project_volunteeers
   end
 
-  
+  def update(attributes)
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{self.id()};")
+  end
 
 
 end
