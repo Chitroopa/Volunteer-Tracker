@@ -1,37 +1,48 @@
-# _{Application Name}_
+# _Volunteer Tracker_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Ruby week3 independent project, 05/05/2017_
 
-#### By _**{List of contributors}**_
+#### By _**Chitroopa Manikkavasagam**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_This application tracks projects and the volunteers working on them. Each volunteer will belong to only one project (one project, many volunteers)._
+
+_The following user stories are completed:_
+
+* _As a non-profit employee, I want to view, add, update and delete projects._
+* _As a non-profit employee, I want to view, add, update and delete volunteers._
+* _As a non-profit employee, I want to add volunteers to a project._
+* _Add a method that calculates how many total hours all volunteers have put into a single project._
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* _Clone this repository_
+* _Give $ bundle command to install all required gems_
+* _Follow the database setup instructions below and create database_
+* _This application uses Sinatra server, give $ ruby app.rb to start the server_
+* _Open your browser, type http://localhost:4567 and hit enter_
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+## Database setup instructions
+
+In PSQL: enter the following lines to create a new database
+
+CREATE DATABASE volunteer_tracker;
+CREATE TABLE projects (id serial PRIMARY KEY, name varchar, hours int);
+CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar,hours int, phone_number archer, project_id int);
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
-
-## Support and contact details
-
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_NA_
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+_Ruby, HTML, CSS_
+
+_Ruby gems : Sinatra, pry, capybara, rspec_
 
 ### License
 
-*{Determine the license under which this application can be used.  See below for more details on licensing.}*
+*MIT*
 
-Copyright (c) 2016 **_{List of contributors or company name}_**
+Copyright (c) 2017 **_Chitroopa Manikkavasagam_**
